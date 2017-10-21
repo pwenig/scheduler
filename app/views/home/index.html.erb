@@ -1,0 +1,23 @@
+
+ <div class='main-container'>
+    <div class='row'>
+      <section class='main'>
+        <h2>Your Name</h2>
+        <input class='username' type='text' ng-model='customer'>
+        <h2>Your Email Address</h2>
+        <input class='username' type='email' ng-model='customer_email'>
+        <h2>Select Agent</h2>
+        <select name='agentSelect' class='agent-select' ng-model='selected_agent' ng-options='user.name for user in users'>
+        </select>
+        <h2>Select Date & Time</h2>
+        <input class='req-data' type='datetime-local' ng-model='req_date'>
+        <br>
+        <button class='request' ng-click='send()'>Send Request</button>
+         <h2 ng-if='result'>{{ result['message'] }}</h2>
+      </section>
+    </div>
+  </div>
+
+
+
+

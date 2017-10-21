@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app='realtorScheduler'>
+  <head>
+    <title>Realtor Scheduler</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<div class="header-container">
+    <div class="row">
+      <section class="header">
+       <a href="/">Agent Scheduler</a>
+      </section>
+        <% if notice %>
+          <p class="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert"><%= alert %></p>
+        <% end %>
+    </div>
+  </div>
+  <body>
+  <div ng-controller='MainCtrl'>
+    <%= yield %>
+  </div>
+  </body>
+</html>
