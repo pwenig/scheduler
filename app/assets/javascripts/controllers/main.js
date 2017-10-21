@@ -5,8 +5,6 @@ MainCtrl.$inject = ['$scope', 'User'];
 
 function MainCtrl ($scope, User) {
 
-  console.log('HERE!!!!')
-
   User.get().then(function(data) {
     
     $scope.users = data;
@@ -14,21 +12,27 @@ function MainCtrl ($scope, User) {
   });
 
   $scope.send = function() {
-    request_params = {
-      customer: $scope.customer,
-      customer_email: $scope.customer_email,
-      agent: $scope.selected_agent.name,
-      date: $scope.req_date
-    }
-    User.check_availability(request_params).then(function(result) {
+    if( $scope.customer && $scope.customer_email && $scope.selected_agent && $scope.req_date) {
 
-      $scope.result = result;
-      console.log('MADEIT', result)
-      $scope.customer = null;
-      $scope.customer_email = null;
-      $scope.selected_agent = null;
-      $scope.req_date = null;
-    })
+      request_params = {
+        customer: $scope.customer,
+        customer_email: $scope.customer_email,
+        agent: $scope.selected_agent.name,
+        date: $scope.req_date
+      }
+      User.check_availability(request_params).then(function(result) {
+  
+        $scope.result = result;
+        $scope.customer = null;
+        $scope.customer_email = null;
+        $scope.selected_agent = null;
+        $scope.req_date = null;
+      })
+
+    } else {
+      $scope.result = {message: 'Please complete form'};
+    }
+    
   }
 
 }
